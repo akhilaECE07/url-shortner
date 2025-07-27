@@ -8,6 +8,8 @@ import connectDB from "./db/dbConnect.js";
 import { config } from "./config.js";
 import authRouter from "./routes/authRouter.js";
 import dotenv from 'dotenv'
+import userRouter from "./routes/userRouter.js";
+import shortURLRouter from "./routes/shortURLRouter.js";
 const app = express();
 dotenv.config();
 // middlewares
@@ -31,6 +33,9 @@ connectDB();
 
 
 app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
+app.use("/api/s", shortURLRouter);
+
 
 
 app.use(express.static(path.join(__dirname, "../../frontend/dist")));
